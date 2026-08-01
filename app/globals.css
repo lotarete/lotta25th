@@ -24,7 +24,7 @@ body {
   inset: 0;
   z-index: 0;
   /* Sampled from invitation-crisp.png so contained letterboxing is invisible. */
-  background: #010561;
+  background: #000269;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,14 +38,14 @@ body {
 .invitation-frame {
   position: relative;
   flex: none;
-  aspect-ratio: 1672 / 940;
-  width: min(100%, calc(100dvh * 1672 / 940));
+  aspect-ratio: 4269 / 2400;
+  width: min(100%, calc(100dvh * 4269 / 2400));
   container-type: size;
 }
 
 @media (min-aspect-ratio: 1/1) {
   .invitation-frame {
-    width: max(100%, calc(100dvh * 1672 / 940));
+    width: max(100%, calc(100dvh * 4269 / 2400));
   }
 }
 
