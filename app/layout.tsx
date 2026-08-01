@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
+import { Lora } from "next/font/google";
 import "./globals.css";
 
 /* Self-hosted at build time, so no runtime request to Google.
    latin-ext carries the Estonian õ alongside ä/ö/ü. */
-const details = Manrope({
+const details = Lora({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500"],
   variable: "--font-details",
