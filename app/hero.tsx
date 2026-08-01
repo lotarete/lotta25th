@@ -55,7 +55,7 @@ export default function Hero() {
       <div className="invitation">
         <div className="invitation-frame">
           <img
-            src="/invitation-crisp.png"
+            src="/invitation-web.webp"
             alt="Lotta-Lorette 25 — Tallinn, 29 August"
           />
 
