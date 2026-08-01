@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Libre_Franklin } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 
 /* Self-hosted at build time, so no runtime request to Google.
    latin-ext carries the Estonian õ alongside ä/ö/ü. */
-const details = Libre_Franklin({
+const details = Nunito({
   subsets: ["latin", "latin-ext"],
-  weight: ["100"],
+  weight: ["300"],
   variable: "--font-details",
   display: "swap",
 });
