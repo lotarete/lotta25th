@@ -54,7 +54,10 @@ export default function Hero() {
           once the artwork cuts away. */}
       <div className="invitation">
         <div className="invitation-frame">
-          <img src="/invitation.png" alt="Lotta-Lorette 25 — Tallinn, 29 August" />
+          <img
+            src="/invitation-crisp.png"
+            alt="Lotta-Lorette 25 — Tallinn, 29 August"
+          />
 
           <div className="invitation-details">
             <p>
