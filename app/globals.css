@@ -65,7 +65,7 @@ body {
   transform: translateX(-50%);
   width: 46%;
   text-align: center;
-  color: #ffd1fc;
+  color: #ffb8da;
   font-family:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial,
     sans-serif;
@@ -74,7 +74,7 @@ body {
 }
 
 .invitation-details p {
-  margin: 0 0 1.4em;
+  margin: 0 0 0.85em;
 }
 
 .invitation-details p:last-child {
