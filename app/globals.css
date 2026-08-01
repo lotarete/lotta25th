@@ -65,11 +65,11 @@ body {
   transform: translateX(-50%);
   width: 46%;
   text-align: center;
-  color: #fff;
+  color: #ffd1fc;
   font-family:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial,
     sans-serif;
-  font-size: 2.1cqw;
+  font-size: 1.8cqw;
   line-height: 1.35;
 }
 
