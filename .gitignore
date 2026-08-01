@@ -24,3 +24,9 @@ yarn-error.log*
 # Editor
 .vscode/
 .idea/
+
+# Next.js
+.next/
+next-env.d.ts
+.vercel
+*.tsbuildinfo
