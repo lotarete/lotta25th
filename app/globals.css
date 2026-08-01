@@ -4,3 +4,29 @@ html,
 body {
   height: 100%;
 }
+
+body {
+  /* The artwork is a transparent cutout — this is what shows through the hole
+     until the invitation layer has content. */
+  background: #fff;
+  color-scheme: light;
+}
+
+.hero {
+  position: relative;
+}
+
+.invitation {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* The artwork is in normal flow, so its aspect ratio sets the hero height.
+   Portrait source on narrow screens, landscape on wide — see <picture>. */
+.artwork {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: block;
+}
