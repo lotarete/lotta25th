@@ -14,6 +14,9 @@ body {
 
 .hero {
   position: relative;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 .invitation {
@@ -22,11 +25,16 @@ body {
   z-index: 0;
 }
 
-/* The artwork is in normal flow, so its aspect ratio sets the hero height.
-   Portrait source on narrow screens, landscape on wide — see <picture>. */
+/* Fill the hero at any window shape — the artwork is cropped instead of being
+   letterboxed, so there are never white edges. It stays centred, which keeps
+   the transparent cutout in the middle of the screen. The <picture> still
+   picks the portrait or landscape source so the crop stays modest. */
 .artwork {
   position: relative;
   z-index: 1;
-  width: 100%;
   display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
