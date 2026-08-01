@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Nunito } from "next/font/google";
+import { Lexend } from "next/font/google";
 import "./globals.css";
 
 /* Self-hosted at build time, so no runtime request to Google.
    latin-ext carries the Estonian õ alongside ä/ö/ü. */
-const details = Nunito({
+const details = Lexend({
   subsets: ["latin", "latin-ext"],
-  weight: ["300"],
+  weight: ["100"],
   variable: "--font-details",
   display: "swap",
 });
