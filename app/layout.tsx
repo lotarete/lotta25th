@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Raleway } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 
 /* Self-hosted at build time, so no runtime request to Google.
    latin-ext carries the Estonian õ alongside ä/ö/ü. */
-const details = Raleway({
+const details = Manrope({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500"],
   variable: "--font-details",
