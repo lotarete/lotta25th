@@ -23,6 +23,68 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
+  /* Sampled from invitation.png so contained letterboxing is invisible. */
+  background: #000269;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* A box locked to invitation.png's own proportions, so the details text below
+   can be placed in the artwork's coordinates and scale along with it.
+   Portrait screens contain it (a phone would otherwise crop away most of the
+   width); landscape screens cover. */
+.invitation-frame {
+  position: relative;
+  flex: none;
+  aspect-ratio: 1366 / 768;
+  width: min(100%, calc(100dvh * 1366 / 768));
+  container-type: size;
+}
+
+@media (min-aspect-ratio: 1/1) {
+  .invitation-frame {
+    width: max(100%, calc(100dvh * 1366 / 768));
+  }
+}
+
+.invitation-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Centred under "TALLINN, 29 AUGUST", which sits at 66% across / 49% down.
+   cqw units are relative to the frame, so the text tracks the artwork at
+   every size instead of drifting off it. */
+.invitation-details {
+  position: absolute;
+  left: 66%;
+  top: 55%;
+  transform: translateX(-50%);
+  width: 46%;
+  text-align: center;
+  color: #fff;
+  font-family:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial,
+    sans-serif;
+  font-size: 2.1cqw;
+  line-height: 1.35;
+}
+
+.invitation-details p {
+  margin: 0 0 1.4em;
+}
+
+.invitation-details p:last-child {
+  margin-bottom: 0;
+}
+
+.invitation-details a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 /* Fill the hero at any window shape — the artwork is cropped instead of being

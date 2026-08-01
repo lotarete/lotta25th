@@ -50,8 +50,29 @@ export default function Hero() {
 
   return (
     <div className={finished ? "hero is-finished" : "hero"}>
-      {/* Stage 2 — invitation content, still to come. */}
-      <div className="invitation" />
+      {/* Stage 2 — revealed through the artwork's opening, then left on screen
+          once the artwork cuts away. */}
+      <div className="invitation">
+        <div className="invitation-frame">
+          <img src="/invitation.png" alt="Lotta-Lorette 25 — Tallinn, 29 August" />
+
+          <div className="invitation-details">
+            <p>
+              Oled oodatud kell 20. Kohtume{" "}
+              <a
+                href="https://botikaed.ee/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Botikus
+              </a>
+              !
+            </p>
+            <p>Marati tn 5, 11712 Tallinn</p>
+            <p>PANE SELGA: midagi värvilist:)</p>
+          </div>
+        </div>
+      </div>
 
       {src && (
         <img
