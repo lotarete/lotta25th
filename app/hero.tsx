@@ -2,36 +2,49 @@
 
 import { useEffect, useRef, useState } from "react";
 
-/* Total run time of each animated WebP, summed from its ANMF frame durations.
-   Both files are set to loop once, so they stop on the final frame — which is
-   the artwork at full coverage. We fade that away to end on an empty page. */
-const DURATION_MS: Record<string, number> = {
-  "color_master-horizontal.webp": 2230,
-  "color_landing.webp": 2930,
-};
+/* Each source with the total run time summed from its ANMF frame durations.
+   Both files loop once and stop on their final frame, which is the artwork at
+   full coverage — we cut that away to end on an empty page. */
+const LANDSCAPE = { src: "/color_master-horizontal.webp", durationMs: 2230 };
+const PORTRAIT = { src: "/color_landing.webp", durationMs: 2930 };
 
 export default function Hero() {
-  const imgRef = useRef<HTMLImageElement>(null);
+  const [src, setSrc] = useState<string | null>(null);
   const [finished, setFinished] = useState(false);
+  const durationRef = useRef(PORTRAIT.durationMs);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
-    const img = imgRef.current;
-    if (!img) return;
+    const choice = window.matchMedia("(min-aspect-ratio: 1/1)").matches
+      ? LANDSCAPE
+      : PORTRAIT;
+    durationRef.current = choice.durationMs;
 
-    let timer: ReturnType<typeof setTimeout>;
+    const controller = new AbortController();
+    let objectUrl: string | null = null;
+    let cancelled = false;
 
-    // Which of the two sources <picture> settled on decides how long to wait.
-    const start = () => {
-      const file = img.currentSrc.split("/").pop() ?? "";
-      timer = setTimeout(() => setFinished(true), DURATION_MS[file] ?? 3000);
-    };
-
-    if (img.complete) start();
-    else img.addEventListener("load", start, { once: true });
+    /* A single-loop animated WebP does not replay when the browser already has
+       it decoded — it just shows the last frame. Handing the <img> a fresh blob
+       URL on every load forces a new decode so the animation always starts at
+       frame one. The fetch still hits the HTTP cache, so this costs no extra
+       download. */
+    fetch(choice.src, { signal: controller.signal })
+      .then((res) => res.blob())
+      .then((blob) => {
+        if (cancelled) return;
+        objectUrl = URL.createObjectURL(blob);
+        setSrc(objectUrl);
+      })
+      .catch(() => {
+        if (!cancelled) setSrc(choice.src);
+      });
 
     return () => {
-      clearTimeout(timer);
-      img.removeEventListener("load", start);
+      cancelled = true;
+      controller.abort();
+      clearTimeout(timerRef.current);
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
     };
   }, []);
 
@@ -40,24 +53,19 @@ export default function Hero() {
       {/* Stage 2 — invitation content, still to come. */}
       <div className="invitation" />
 
-      <picture>
-        <source
-          media="(min-aspect-ratio: 1/1)"
-          srcSet="/color_master-horizontal.webp"
-          width={1537}
-          height={1023}
-        />
+      {src && (
         <img
-          ref={imgRef}
           className="artwork"
-          src="/color_landing.webp"
+          src={src}
           alt=""
-          width={1023}
-          height={1537}
-          fetchPriority="high"
-          decoding="async"
+          onLoad={() => {
+            timerRef.current = setTimeout(
+              () => setFinished(true),
+              durationRef.current,
+            );
+          }}
         />
-      </picture>
+      )}
     </div>
   );
 }
