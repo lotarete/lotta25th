@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Lora } from "next/font/google";
+import { Libre_Franklin } from "next/font/google";
 import "./globals.css";
 
 /* Self-hosted at build time, so no runtime request to Google.
    latin-ext carries the Estonian õ alongside ä/ö/ü. */
-const details = Lora({
+const details = Libre_Franklin({
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500"],
+  weight: ["100"],
   variable: "--font-details",
   display: "swap",
 });
