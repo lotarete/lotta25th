@@ -37,4 +37,12 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: opacity 700ms ease;
+}
+
+/* The WebPs run once and stop on their final frame, which is the artwork at
+   full coverage. Once that frame lands, clear it so the page ends empty. */
+.hero.is-finished .artwork {
+  opacity: 0;
+  pointer-events: none;
 }
