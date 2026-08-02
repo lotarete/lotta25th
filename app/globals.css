@@ -107,3 +107,56 @@ body {
 .hero.is-finished .artwork {
   display: none;
 }
+
+/* Bubble layer sits above the artwork during the intro. Each bubble pops from
+   the centre, drifts to its spot and fades — staggered so they burst one by
+   one. They finish before the reveal; is-finished clears any stragglers. */
+.bubbles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bubble {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--size);
+  height: auto;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.1);
+  animation: bubble-pop 1.25s ease-out var(--delay) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes bubble-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.1);
+  }
+  18% {
+    opacity: 0.95;
+  }
+  55% {
+    opacity: 0.95;
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty)))
+      scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(
+        calc(-50% + var(--tx) * 1.25),
+        calc(-50% + var(--ty) * 1.25)
+      )
+      scale(1.35);
+  }
+}
+
+/* Motion-sensitive visitors get the reveal without the popping bubbles. */
+@media (prefers-reduced-motion: reduce) {
+  .bubbles {
+    display: none;
+  }
+}
