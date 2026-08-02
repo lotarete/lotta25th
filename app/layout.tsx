@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Lexend } from "next/font/google";
+import { Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
 /* Self-hosted at build time, so no runtime request to Google.
    latin-ext carries the Estonian õ alongside ä/ö/ü. */
-const details = Lexend({
+const details = Roboto_Mono({
   subsets: ["latin", "latin-ext"],
-  weight: ["100"],
+  weight: ["300"],
   variable: "--font-details",
   display: "swap",
 });

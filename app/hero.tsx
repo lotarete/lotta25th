@@ -55,13 +55,13 @@ export default function Hero() {
       <div className="invitation">
         <div className="invitation-frame">
           <img
-            src="/invitation-web.webp"
+            src="/invitation.png"
             alt="Lotta-Lorette 25 — Tallinn, 29 August"
           />
 
           <div className="invitation-details">
             <p>
-              Oled oodatud kell 20. Kohtume{" "}
+              Oled oodatud kell 20:00. Kohtume{" "}
               <a
                 href="https://botikaed.ee/"
                 target="_blank"
