@@ -8,19 +8,22 @@ import { useEffect, useRef, useState } from "react";
 const LANDSCAPE = { src: "/color_master-horizontal.webp", durationMs: 2230 };
 const PORTRAIT = { src: "/color_landing.webp", durationMs: 2930 };
 
-/* Watercolour bubbles that pop around the edges of the screen one by one, each
-   swelling in place then bursting. Each has a position (x/y as a % of the
-   viewport, scattered around the perimeter), a size, and a start delay so they
-   fire at different times. Delays keep the whole run near the reveal length. */
+/* Watercolour bubbles that pop one by one, each swelling then bursting. The
+   run starts during the collage intro — the first few burst near the middle
+   while it is still playing — then scatters irregularly out to the edges
+   through the reveal. Positions (x/y as a % of the viewport), sizes and delays
+   are deliberately off-grid so it feels random rather than mechanical. */
 const BUBBLES = [
-  { n: 1, x: "9%", y: "15%", size: "18vmin", delay: "0s" }, // top-left
-  { n: 3, x: "88%", y: "14%", size: "15vmin", delay: "0.2s" }, // top-right
-  { n: 5, x: "83%", y: "83%", size: "19vmin", delay: "0.35s" }, // bottom-right
-  { n: 7, x: "11%", y: "82%", size: "14vmin", delay: "0.55s" }, // bottom-left
-  { n: 2, x: "47%", y: "8%", size: "13vmin", delay: "0.7s" }, // top-centre
-  { n: 4, x: "93%", y: "48%", size: "16vmin", delay: "0.85s" }, // right
-  { n: 8, x: "6%", y: "47%", size: "17vmin", delay: "1s" }, // left
-  { n: 6, x: "44%", y: "91%", size: "15vmin", delay: "1.15s" }, // bottom-centre
+  // early — burst near the middle while the collage is still playing
+  { n: 2, x: "50%", y: "47%", size: "12vmin", delay: "0.3s" },
+  { n: 5, x: "42%", y: "56%", size: "16vmin", delay: "0.6s" },
+  { n: 8, x: "58%", y: "41%", size: "10vmin", delay: "0.95s" },
+  // then scatter out toward the edges, unevenly
+  { n: 1, x: "13%", y: "23%", size: "20vmin", delay: "1.25s" },
+  { n: 4, x: "90%", y: "34%", size: "12vmin", delay: "1.5s" },
+  { n: 6, x: "21%", y: "84%", size: "17vmin", delay: "1.85s" },
+  { n: 3, x: "85%", y: "79%", size: "14vmin", delay: "2.15s" },
+  { n: 7, x: "69%", y: "15%", size: "11vmin", delay: "2.5s" },
 ] as const;
 
 export default function Hero() {
@@ -70,7 +73,7 @@ export default function Hero() {
       <div className="invitation">
         <div className="invitation-frame">
           <img
-            src="/invitation_yellow.png"
+            src="/invitation_butteryellow.png"
             alt="Lotta-Lorette 25 — Tallinn, 29 August"
           />
 
@@ -106,9 +109,9 @@ export default function Hero() {
         />
       )}
 
-      {/* Once the collage clears, bubbles pop around the edges of the
-          invitation one by one, then vanish. */}
-      {finished && (
+      {/* Bubbles pop one by one starting during the collage intro (first few
+          in the middle) and scatter out to the edges through the reveal. */}
+      {src && (
         <div className="bubbles" aria-hidden="true">
           {BUBBLES.map((b) => (
             <img

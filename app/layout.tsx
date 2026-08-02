@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Roboto_Mono } from "next/font/google";
+import { Allura } from "next/font/google";
 import "./globals.css";
 
 /* Self-hosted at build time, so no runtime request to Google.
    latin-ext carries the Estonian õ alongside ä/ö/ü. */
-const details = Roboto_Mono({
+const details = Allura({
   subsets: ["latin", "latin-ext"],
-  weight: ["300"],
+  weight: ["400"],
   variable: "--font-details",
   display: "swap",
 });

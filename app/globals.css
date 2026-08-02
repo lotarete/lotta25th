@@ -24,7 +24,7 @@ body {
   inset: 0;
   z-index: 0;
   /* Sampled from invitation.png so contained letterboxing is invisible. */
-  background: #ecac13;
+  background: #fdeba7;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,20 +55,20 @@ body {
   display: block;
 }
 
-/* Centred under "TALLINN, 29 AUGUST", which sits at ~54% across / ~60% down
-   in this layout. cqw units are relative to the frame, so the text tracks the
+/* Under "TALLINN, 29 AUGUST", which sits in the top-right (~88% across /
+   ~14% down) in this layout. Right-aligned to the edge so it stays clear of
+   the girl. cqw units are relative to the frame, so the text tracks the
    artwork at every size instead of drifting off it. */
 .invitation-details {
   position: absolute;
-  left: 54%;
-  top: 66%;
-  transform: translateX(-50%);
+  right: 2.5%;
+  top: 30%;
   width: 34%;
   text-align: center;
   color: #ffa1a1;
   font-family: var(--font-details), ui-sans-serif, system-ui, sans-serif;
   font-size: 1.75cqw;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 1.3;
 }
