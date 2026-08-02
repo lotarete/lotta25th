@@ -8,20 +8,19 @@ import { useEffect, useRef, useState } from "react";
 const LANDSCAPE = { src: "/color_master-horizontal.webp", durationMs: 2230 };
 const PORTRAIT = { src: "/color_landing.webp", durationMs: 2930 };
 
-/* Watercolour bubbles that pop out of the centre one by one during the intro,
-   drift toward their spot and fade — as if bubbling up and bursting. Each has
-   a direction it travels (tx/ty, in vmin from centre), a size, and a start
-   delay so they cascade at different times. Delays keep the whole run under
-   the landscape animation's 2230ms so the bubbles are gone before the reveal. */
+/* Watercolour bubbles that pop around the edges of the screen one by one, each
+   swelling in place then bursting. Each has a position (x/y as a % of the
+   viewport, scattered around the perimeter), a size, and a start delay so they
+   fire at different times. Delays keep the whole run near the reveal length. */
 const BUBBLES = [
-  { n: 4, tx: "2vmin", ty: "-30vmin", size: "15vmin", delay: "0s" },
-  { n: 1, tx: "31vmin", ty: "-19vmin", size: "20vmin", delay: "0.18s" },
-  { n: 6, tx: "-30vmin", ty: "-14vmin", size: "17vmin", delay: "0.32s" },
-  { n: 2, tx: "38vmin", ty: "9vmin", size: "13vmin", delay: "0.5s" },
-  { n: 8, tx: "-38vmin", ty: "13vmin", size: "16vmin", delay: "0.64s" },
-  { n: 5, tx: "20vmin", ty: "29vmin", size: "19vmin", delay: "0.8s" },
-  { n: 3, tx: "-15vmin", ty: "31vmin", size: "14vmin", delay: "0.96s" },
-  { n: 7, tx: "-4vmin", ty: "20vmin", size: "12vmin", delay: "1.1s" },
+  { n: 1, x: "9%", y: "15%", size: "18vmin", delay: "0s" }, // top-left
+  { n: 3, x: "88%", y: "14%", size: "15vmin", delay: "0.2s" }, // top-right
+  { n: 5, x: "83%", y: "83%", size: "19vmin", delay: "0.35s" }, // bottom-right
+  { n: 7, x: "11%", y: "82%", size: "14vmin", delay: "0.55s" }, // bottom-left
+  { n: 2, x: "47%", y: "8%", size: "13vmin", delay: "0.7s" }, // top-centre
+  { n: 4, x: "93%", y: "48%", size: "16vmin", delay: "0.85s" }, // right
+  { n: 8, x: "6%", y: "47%", size: "17vmin", delay: "1s" }, // left
+  { n: 6, x: "44%", y: "91%", size: "15vmin", delay: "1.15s" }, // bottom-centre
 ] as const;
 
 export default function Hero() {
@@ -71,7 +70,7 @@ export default function Hero() {
       <div className="invitation">
         <div className="invitation-frame">
           <img
-            src="/invitation.png"
+            src="/invitation_yellow.png"
             alt="Lotta-Lorette 25 — Tallinn, 29 August"
           />
 
@@ -107,8 +106,8 @@ export default function Hero() {
         />
       )}
 
-      {/* Once the collage clears, bubbles pop from the centre over the navy
-          invitation — where they actually read — one by one, then vanish. */}
+      {/* Once the collage clears, bubbles pop around the edges of the
+          invitation one by one, then vanish. */}
       {finished && (
         <div className="bubbles" aria-hidden="true">
           {BUBBLES.map((b) => (
@@ -119,8 +118,8 @@ export default function Hero() {
               alt=""
               style={
                 {
-                  "--tx": b.tx,
-                  "--ty": b.ty,
+                  "--x": b.x,
+                  "--y": b.y,
                   "--size": b.size,
                   "--delay": b.delay,
                 } as React.CSSProperties
