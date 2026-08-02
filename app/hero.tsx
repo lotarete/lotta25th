@@ -8,22 +8,20 @@ import { useEffect, useRef, useState } from "react";
 const LANDSCAPE = { src: "/color_master-horizontal.webp", durationMs: 2230 };
 const PORTRAIT = { src: "/color_landing.webp", durationMs: 2930 };
 
-/* Watercolour bubbles that pop one by one, each swelling then bursting. The
-   run starts during the collage intro — the first few burst near the middle
-   while it is still playing — then scatters irregularly out to the edges
-   through the reveal. Positions (x/y as a % of the viewport), sizes and delays
-   are deliberately off-grid so it feels random rather than mechanical. */
+/* Watercolour bubbles that pop one by one in the very centre, each swelling
+   then bursting. The run starts during the collage intro — they show through
+   the opening hole in the middle — and continues over the invitation after the
+   reveal. Positions (x/y as a % of the viewport), sizes and delays are
+   deliberately off-grid so it feels random rather than mechanical. */
 const BUBBLES = [
-  // early — burst near the middle while the collage is still playing
-  { n: 2, x: "50%", y: "47%", size: "12vmin", delay: "0.3s" },
-  { n: 5, x: "42%", y: "56%", size: "16vmin", delay: "0.6s" },
-  { n: 8, x: "58%", y: "41%", size: "10vmin", delay: "0.95s" },
-  // then scatter out toward the edges, unevenly
-  { n: 1, x: "13%", y: "23%", size: "20vmin", delay: "1.25s" },
-  { n: 4, x: "90%", y: "34%", size: "12vmin", delay: "1.5s" },
-  { n: 6, x: "21%", y: "84%", size: "17vmin", delay: "1.85s" },
-  { n: 3, x: "85%", y: "79%", size: "14vmin", delay: "2.15s" },
-  { n: 7, x: "69%", y: "15%", size: "11vmin", delay: "2.5s" },
+  { n: 2, x: "50%", y: "49%", size: "12vmin", delay: "0.3s" },
+  { n: 5, x: "43%", y: "54%", size: "16vmin", delay: "0.55s" },
+  { n: 8, x: "57%", y: "44%", size: "10vmin", delay: "0.8s" },
+  { n: 1, x: "47%", y: "41%", size: "15vmin", delay: "1.05s" },
+  { n: 4, x: "55%", y: "57%", size: "12vmin", delay: "1.35s" },
+  { n: 6, x: "40%", y: "46%", size: "14vmin", delay: "1.65s" },
+  { n: 3, x: "60%", y: "51%", size: "13vmin", delay: "1.95s" },
+  { n: 7, x: "50%", y: "59%", size: "11vmin", delay: "2.3s" },
 ] as const;
 
 export default function Hero() {
