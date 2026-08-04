@@ -64,6 +64,35 @@ body {
   height: 7%;
 }
 
+/* RSVP button, centred under the baked-in "THE PARTY STARTS AT 8PM." line
+   (~85% across / ~51% down). cqw units scale it with the frame. */
+.rsvp-button {
+  position: absolute;
+  left: 85%;
+  top: 57%;
+  transform: translateX(-50%);
+  padding: 0.85cqw 2.8cqw;
+  border-radius: 999px;
+  background: #a04d2b;
+  color: #fff8ec;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 1.5cqw;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 0.3cqw 1cqw rgba(160, 77, 43, 0.28);
+  transition:
+    background-color 150ms ease,
+    transform 150ms ease;
+}
+
+.rsvp-button:hover {
+  background: #853d20;
+  transform: translateX(-50%) translateY(-2%);
+}
+
 /* The crisp PNG is painted into this full-resolution canvas. On landscape the
    portrait master is rotated to preserve the original horizontal composition. */
 .artwork {
@@ -99,7 +128,7 @@ body {
     top: 50%;
     width: 100dvh;
     height: 100dvw;
-    transform: translate(-50%, -50%) rotate(-90deg);
+    transform: translate(-50%, -50%) rotate(90deg);
   }
 }
 

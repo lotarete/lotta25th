@@ -49,10 +49,54 @@ const BUBBLES = [
   { x: 420, y: 1480, radius: 154, seed: 35 },
   { x: 682, y: 1453, radius: 164, seed: 36 },
   { x: 902, y: 1490, radius: 178, seed: 37 },
+  { x: 0, y: 792, radius: 150, seed: 38 },
+  { x: 1020, y: 216, radius: 150, seed: 39 },
+  { x: 1020, y: 1056, radius: 150, seed: 40 },
+  { x: 216, y: 636, radius: 150, seed: 41 },
+  { x: 756, y: 1092, radius: 150, seed: 42 },
+  { x: 468, y: 780, radius: 150, seed: 43 },
+  { x: 180, y: 168, radius: 150, seed: 44 },
+  { x: 204, y: 444, radius: 150, seed: 45 },
+  { x: 816, y: 684, radius: 150, seed: 46 },
+  { x: 828, y: 264, radius: 150, seed: 47 },
+  { x: 444, y: 1116, radius: 150, seed: 48 },
+  { x: 276, y: 1056, radius: 150, seed: 49 },
+  { x: 432, y: 540, radius: 150, seed: 50 },
+  { x: 648, y: 468, radius: 150, seed: 51 },
+  { x: 0, y: 1200, radius: 150, seed: 52 },
+  { x: 180, y: 0, radius: 150, seed: 53 },
+  { x: 600, y: 696, radius: 150, seed: 54 },
+  { x: 0, y: 396, radius: 150, seed: 55 },
+  { x: 120, y: 888, radius: 150, seed: 56 },
+  { x: 0, y: 156, radius: 150, seed: 57 },
+  { x: 540, y: 204, radius: 150, seed: 58 },
+  { x: 384, y: 0, radius: 150, seed: 59 },
+  { x: 444, y: 1320, radius: 150, seed: 60 },
+  { x: 588, y: 1068, radius: 150, seed: 61 },
+  { x: 900, y: 1140, radius: 150, seed: 62 },
+  { x: 1020, y: 1356, radius: 150, seed: 63 },
+  { x: 348, y: 696, radius: 150, seed: 64 },
+  { x: 132, y: 1272, radius: 150, seed: 65 },
+  { x: 288, y: 1404, radius: 150, seed: 66 },
+  { x: 72, y: 672, radius: 150, seed: 67 },
+  { x: 1020, y: 516, radius: 150, seed: 68 },
+  { x: 708, y: 600, radius: 150, seed: 69 },
+  { x: 1020, y: 744, radius: 150, seed: 70 },
+  { x: 348, y: 432, radius: 150, seed: 71 },
+  { x: 792, y: 0, radius: 150, seed: 72 },
+  { x: 804, y: 1353, radius: 100, seed: 73 },
+  { x: 552, y: 1536, radius: 100, seed: 74 },
+  { x: 714, y: 798, radius: 100, seed: 75 },
+  { x: 0, y: 0, radius: 100, seed: 76 },
+  { x: 888, y: 1320, radius: 100, seed: 77 },
+  { x: 603, y: 0, radius: 100, seed: 78 },
+  { x: 72, y: 1536, radius: 100, seed: 79 },
+  { x: 0, y: 948, radius: 100, seed: 80 },
+  { x: 540, y: 1413, radius: 100, seed: 81 },
 ] as const;
 
 const START_DELAY_MS = 300;
-const BUBBLE_INTERVAL_MS = 78;
+const BUBBLE_INTERVAL_MS = 62;
 
 type Bubble = (typeof BUBBLES)[number];
 
@@ -157,7 +201,7 @@ export default function Hero() {
 
       context.save();
       context.translate(width / 2, height / 2);
-      if (landscape) context.rotate(-Math.PI / 2);
+      if (landscape) context.rotate(Math.PI / 2);
       context.drawImage(
         image,
         (-ARTWORK.width * scale) / 2,
@@ -199,7 +243,7 @@ export default function Hero() {
           () => {
             if (!cancelled) setFinished(true);
           },
-          START_DELAY_MS + order.length * BUBBLE_INTERVAL_MS + 120,
+          START_DELAY_MS + order.length * BUBBLE_INTERVAL_MS + 80,
         ),
       );
     };
@@ -231,6 +275,16 @@ export default function Hero() {
             rel="noopener noreferrer"
             aria-label="Botik — venue website"
           />
+
+          {/* RSVP button under "THE PARTY STARTS AT 8PM." */}
+          <a
+            className="rsvp-button"
+            href="https://www.darcyplans.com/rsvp/lottas-25"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            RSVP
+          </a>
         </div>
       </div>
 
