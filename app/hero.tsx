@@ -167,11 +167,13 @@ function cutOutBubble(
 type HeroProps = {
   invitationSrc?: string;
   invitationAlt?: string;
+  rsvpNote?: string;
 };
 
 export default function Hero({
   invitationSrc = "/invitation_orange_pdf.webp",
   invitationAlt = "Lotta-Lorette 25 — Meet you at Botik, Marati tn 5, 11712 Tallinn. The party starts at 8PM. Dress code: something colorful!",
+  rsvpNote = "Let me know you're coming and I'll have a drink waiting for you at the bar.",
 }: HeroProps = {}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [ready, setReady] = useState(false);
@@ -290,6 +292,8 @@ export default function Hero({
           >
             RSVP
           </a>
+
+          <p className="rsvp-note">{rsvpNote}</p>
         </div>
       </div>
 

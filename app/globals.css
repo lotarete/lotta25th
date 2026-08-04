@@ -97,6 +97,21 @@ body {
   transform: translateX(-50%) translateY(-2%);
 }
 
+/* Small note under the RSVP button. */
+.rsvp-note {
+  position: absolute;
+  left: 85%;
+  top: 65%;
+  transform: translateX(-50%);
+  width: 26%;
+  margin: 0;
+  text-align: center;
+  color: #000;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 1cqw;
+  line-height: 1.4;
+}
+
 /* The crisp PNG is painted into this full-resolution canvas. On landscape the
    portrait master is rotated to preserve the original horizontal composition. */
 .artwork {
