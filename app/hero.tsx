@@ -71,25 +71,19 @@ export default function Hero() {
       <div className="invitation">
         <div className="invitation-frame">
           <img
-            src="/invitation_butteryellow.png"
-            alt="Lotta-Lorette 25 — Tallinn, 29 August"
+            src="/invitation_orange.png"
+            alt="Lotta-Lorette 25 — Meet you at Botik, Marati tn 5, 11712 Tallinn. The party starts at 8PM. Dress code: something colorful!"
           />
 
-          <div className="invitation-details">
-            <p>
-              Oled oodatud kell 20:00. Kohtume{" "}
-              <a
-                href="https://botikaed.ee/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Botikus
-              </a>
-              !
-            </p>
-            <p>Marati tn 5, 11712 Tallinn</p>
-            <p>PANE SELGA: midagi värvilist:)</p>
-          </div>
+          {/* The invitation text is baked into the image; this transparent
+              hotspot sits over the "Botik" word so it stays clickable. */}
+          <a
+            className="botik-link"
+            href="https://botikaed.ee/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Botik — venue website"
+          />
         </div>
       </div>
 
