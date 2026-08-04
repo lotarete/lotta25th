@@ -90,7 +90,9 @@ body {
 }
 
 .rsvp-button:hover {
-  background: #000;
+  /* Wine red sampled from the invitation. */
+  background: #9a1703;
+  border-color: #9a1703;
   color: #fff8ec;
   transform: translateX(-50%) translateY(-2%);
 }
