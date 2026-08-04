@@ -164,7 +164,15 @@ function cutOutBubble(
   context.restore();
 }
 
-export default function Hero() {
+type HeroProps = {
+  invitationSrc?: string;
+  invitationAlt?: string;
+};
+
+export default function Hero({
+  invitationSrc = "/invitation_orange_pdf.webp",
+  invitationAlt = "Lotta-Lorette 25 — Meet you at Botik, Marati tn 5, 11712 Tallinn. The party starts at 8PM. Dress code: something colorful!",
+}: HeroProps = {}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [ready, setReady] = useState(false);
   const [finished, setFinished] = useState(false);
@@ -263,10 +271,7 @@ export default function Hero() {
     <div className={finished ? "hero is-finished" : "hero"}>
       <div className="invitation">
         <div className="invitation-frame">
-          <img
-            src="/invitation_orange_pdf.webp"
-            alt="Lotta-Lorette 25 — Meet you at Botik, Marati tn 5, 11712 Tallinn. The party starts at 8PM. Dress code: something colorful!"
-          />
+          <img src={invitationSrc} alt={invitationAlt} />
 
           <a
             className="botik-link"
