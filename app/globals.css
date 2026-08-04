@@ -73,8 +73,9 @@ body {
   transform: translateX(-50%);
   padding: 0.85cqw 2.8cqw;
   border-radius: 999px;
-  background: #a04d2b;
-  color: #fff8ec;
+  background: transparent;
+  border: 0.12cqw solid #000;
+  color: #000;
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-size: 1.5cqw;
   font-weight: 600;
@@ -82,14 +83,15 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0 0.3cqw 1cqw rgba(160, 77, 43, 0.28);
   transition:
     background-color 150ms ease,
+    color 150ms ease,
     transform 150ms ease;
 }
 
 .rsvp-button:hover {
-  background: #853d20;
+  background: #000;
+  color: #fff8ec;
   transform: translateX(-50%) translateY(-2%);
 }
 

@@ -96,7 +96,7 @@ const BUBBLES = [
 ] as const;
 
 const START_DELAY_MS = 300;
-const BUBBLE_INTERVAL_MS = 62;
+const BUBBLE_INTERVAL_MS = 52;
 
 type Bubble = (typeof BUBBLES)[number];
 
@@ -264,7 +264,7 @@ export default function Hero() {
       <div className="invitation">
         <div className="invitation-frame">
           <img
-            src="/invitation_orange.png"
+            src="/invitation_orange_pdf.webp"
             alt="Lotta-Lorette 25 — Meet you at Botik, Marati tn 5, 11712 Tallinn. The party starts at 8PM. Dress code: something colorful!"
           />
 
