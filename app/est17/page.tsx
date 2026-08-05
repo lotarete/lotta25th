@@ -6,7 +6,7 @@ export default function Est17() {
       <Hero
         invitationSrc="/invitation_orange_est_17.webp"
         invitationAlt="Lotta-Lorette 25 — Kohtume Botikus, Marati tn 5, 11712 Tallinn. Oled oodatud kell 17:00. Dress code: something colorful!"
-        rsvpNote="Anna teada, et tuled — baaris ootab sind juba jook."
+        rsvpNote="Anna teada, et tuled, baaris ootab sind juba jook."
       />
     </main>
   );

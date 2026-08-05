@@ -108,7 +108,8 @@ body {
   text-align: center;
   color: #000;
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 1cqw;
+  font-size: 0.8cqw;
+  font-weight: 300;
   line-height: 1.4;
 }
 
