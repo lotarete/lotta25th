@@ -30,13 +30,13 @@ export const metadata: Metadata = {
     title: "Lotta-Lorette 25",
     description: "Lotta-Lorette turns 25 — come celebrate at Botik, Tallinn.",
     type: "website",
-    images: [{ url: "/og/en.jpg", width: 1200, height: 675, alt: "Lotta-Lorette 25 invitation" }],
+    images: [{ url: "/og/share.jpg", width: 1200, height: 675, alt: "Lotta-Lorette 25 invitation" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lotta-Lorette 25",
     description: "Lotta-Lorette turns 25 — come celebrate at Botik, Tallinn.",
-    images: ["/og/en.jpg"],
+    images: ["/og/share.jpg"],
   },
 };
 
