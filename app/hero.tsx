@@ -168,12 +168,14 @@ type HeroProps = {
   invitationSrc?: string;
   invitationAlt?: string;
   rsvpNote?: string;
+  rsvpHref?: string;
 };
 
 export default function Hero({
   invitationSrc = "/invitation_orange_pdf.webp",
   invitationAlt = "Lotta-Lorette 25 — Meet you at Botik, Marati tn 5, 11712 Tallinn. The party starts at 8PM. Dress code: something colorful!",
   rsvpNote = "Let me know you're coming and I'll have a drink waiting for you at the bar.",
+  rsvpHref = "https://www.darcyplans.com/rsvp/lottas-25",
 }: HeroProps = {}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [ready, setReady] = useState(false);
@@ -286,7 +288,7 @@ export default function Hero({
           {/* RSVP button under "THE PARTY STARTS AT 8PM." */}
           <a
             className="rsvp-button"
-            href="https://www.darcyplans.com/rsvp/lottas-25"
+            href={rsvpHref}
             target="_blank"
             rel="noopener noreferrer"
           >
