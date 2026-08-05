@@ -11,8 +11,33 @@ const details = Allura({
   display: "swap",
 });
 
+/* Absolute base for share-card image URLs. Resolves to the Vercel deployment
+   in production/preview and localhost in dev. Set NEXT_PUBLIC_SITE_URL to pin a
+   custom domain. */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
+
 export const metadata: Metadata = {
-  title: "Lotta 25",
+  metadataBase: new URL(siteUrl),
+  title: "Lotta-Lorette 25",
+  description: "Lotta-Lorette turns 25 — come celebrate at Botik, Tallinn.",
+  openGraph: {
+    title: "Lotta-Lorette 25",
+    description: "Lotta-Lorette turns 25 — come celebrate at Botik, Tallinn.",
+    type: "website",
+    images: [{ url: "/og/en.jpg", width: 1200, height: 675, alt: "Lotta-Lorette 25 invitation" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lotta-Lorette 25",
+    description: "Lotta-Lorette turns 25 — come celebrate at Botik, Tallinn.",
+    images: ["/og/en.jpg"],
+  },
 };
 
 export const viewport: Viewport = {
