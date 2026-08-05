@@ -97,11 +97,12 @@ body {
   transform: translateX(-50%) translateY(-2%);
 }
 
-/* Small note under the RSVP button. */
+/* Small note above the RSVP button — anchored by its bottom edge so extra
+   lines grow upward toward the party line, not down into the button. */
 .rsvp-note {
   position: absolute;
   left: 85%;
-  top: 65%;
+  bottom: 45%;
   transform: translateX(-50%);
   width: 26%;
   margin: 0;
