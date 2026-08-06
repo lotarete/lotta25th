@@ -34,19 +34,21 @@ body {
 /* A box locked to the invitation's proportions so the overlays (Botik hotspot,
    RSVP button, note) can be placed in the artwork's coordinates and scale with
    it. Portrait-first (the mobile invitation); landscape gets the wide one and
-   its own overlay positions below. Both cover the viewport. */
+   its own overlay positions below. `min(...)` = contain: the whole invitation
+   always fits on screen (its title and bottom line are never cropped); the
+   cream letterbox is invisible because .invitation shares the image's colour. */
 .invitation-frame {
   position: relative;
   flex: none;
   aspect-ratio: 777 / 1680;
-  width: max(100%, calc(100dvh * 777 / 1680));
+  width: min(100%, calc(100dvh * 777 / 1680));
   container-type: size;
 }
 
 @media (min-aspect-ratio: 1/1) {
   .invitation-frame {
     aspect-ratio: 2562 / 1440;
-    width: max(100%, calc(100dvh * 2562 / 1440));
+    width: min(100%, calc(100dvh * 2562 / 1440));
   }
 }
 
