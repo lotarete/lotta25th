@@ -166,6 +166,7 @@ function cutOutBubble(
 
 type HeroProps = {
   invitationSrc?: string;
+  invitationSrcMobile?: string;
   invitationAlt?: string;
   rsvpNote?: string;
   rsvpHref?: string;
@@ -173,6 +174,7 @@ type HeroProps = {
 
 export default function Hero({
   invitationSrc = "/invitation_orange_pdf.webp",
+  invitationSrcMobile = "/invitation_orange_mobile.webp",
   invitationAlt = "Lotta-Lorette 25 — Meet you at Botik, Marati tn 5, 11712 Tallinn. The party starts at 8PM. Dress code: something colorful!",
   rsvpNote = "Let me know you're coming and I'll have a drink waiting for you at the bar.",
   rsvpHref = "https://www.darcyplans.com/rsvp/lottas-25",
@@ -275,7 +277,12 @@ export default function Hero({
     <div className={finished ? "hero is-finished" : "hero"}>
       <div className="invitation">
         <div className="invitation-frame">
-          <img src={invitationSrc} alt={invitationAlt} />
+          {/* Wide screens get the landscape invitation, phones the portrait
+              one — only the matched source is downloaded. */}
+          <picture>
+            <source media="(min-aspect-ratio: 1/1)" srcSet={invitationSrc} />
+            <img src={invitationSrcMobile} alt={invitationAlt} />
+          </picture>
 
           <a
             className="botik-link"

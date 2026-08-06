@@ -31,53 +31,56 @@ body {
   overflow: hidden;
 }
 
-/* A box locked to invitation_orange.png's own proportions, so the Botik
-   hotspot can be placed in the artwork's coordinates and scale along with it.
-   Portrait screens contain it (a phone would otherwise crop away most of the
-   width); landscape screens cover. */
+/* A box locked to the invitation's proportions so the overlays (Botik hotspot,
+   RSVP button, note) can be placed in the artwork's coordinates and scale with
+   it. Portrait-first (the mobile invitation); landscape gets the wide one and
+   its own overlay positions below. Both cover the viewport. */
 .invitation-frame {
   position: relative;
   flex: none;
-  aspect-ratio: 2562 / 1440;
-  width: min(100%, calc(100dvh * 2562 / 1440));
+  aspect-ratio: 777 / 1680;
+  width: max(100%, calc(100dvh * 777 / 1680));
   container-type: size;
 }
 
 @media (min-aspect-ratio: 1/1) {
   .invitation-frame {
+    aspect-ratio: 2562 / 1440;
     width: max(100%, calc(100dvh * 2562 / 1440));
   }
 }
 
+.invitation-frame picture,
 .invitation-frame img {
+  display: block;
   width: 100%;
   height: 100%;
-  display: block;
 }
 
-/* Transparent clickable hotspot over the baked-in "Botik" word. */
+/* Transparent clickable hotspot over the baked-in "Botik" word.
+   Positions below are portrait (mobile); landscape overrides further down. */
 .botik-link {
   position: absolute;
-  left: 15%;
-  top: 47%;
-  width: 12%;
-  height: 7%;
+  left: 50%;
+  top: 22.5%;
+  width: 24%;
+  height: 5%;
 }
 
-/* RSVP button, centred under the baked-in "THE PARTY STARTS AT 8PM." line
-   (~85% across / ~51% down). cqw units scale it with the frame. */
+/* RSVP button, centred in the open space under the invitation. cqw units scale
+   it with the frame, so portrait (narrow frame) needs larger values. */
 .rsvp-button {
   position: absolute;
-  left: 85%;
-  top: 60%;
+  left: 50%;
+  top: 84%;
   transform: translateX(-50%);
-  padding: 0.85cqw 2.8cqw;
+  padding: 2.2cqw 6cqw;
   border-radius: 999px;
   background: transparent;
-  border: 0.12cqw solid #000;
+  border: 0.35cqw solid #000;
   color: #000;
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 1.5cqw;
+  font-size: 4cqw;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -98,20 +101,45 @@ body {
 }
 
 /* Small note above the RSVP button — anchored by its bottom edge so extra
-   lines grow upward toward the party line, not down into the button. */
+   lines grow upward, not down into the button. */
 .rsvp-note {
   position: absolute;
-  left: 85%;
-  bottom: 41%;
+  left: 50%;
+  bottom: 17%;
   transform: translateX(-50%);
-  width: 26%;
+  width: 74%;
   margin: 0;
   text-align: center;
   color: #000;
   font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 0.68cqw;
+  font-size: 2.9cqw;
   font-weight: 300;
   line-height: 1.4;
+}
+
+/* Landscape (wide screens): the wide invitation with its own overlay layout. */
+@media (min-aspect-ratio: 1/1) {
+  .botik-link {
+    left: 15%;
+    top: 47%;
+    width: 12%;
+    height: 7%;
+  }
+
+  .rsvp-button {
+    left: 85%;
+    top: 60%;
+    padding: 0.85cqw 2.8cqw;
+    border-width: 0.12cqw;
+    font-size: 1.5cqw;
+  }
+
+  .rsvp-note {
+    left: 85%;
+    bottom: 41%;
+    width: 26%;
+    font-size: 0.68cqw;
+  }
 }
 
 /* The crisp PNG is painted into this full-resolution canvas. On landscape the
