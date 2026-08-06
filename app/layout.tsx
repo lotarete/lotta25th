@@ -25,17 +25,17 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Lotta-Lorette 25",
-  description: "Lotta-Lorette turns 25 — come celebrate at Botik, Tallinn.",
+  description: "Lotta-Lorette turns 25 - come celebrate at Botik at 8pm!",
   openGraph: {
     title: "Lotta-Lorette 25",
-    description: "Lotta-Lorette turns 25 — come celebrate at Botik, Tallinn.",
+    description: "Lotta-Lorette turns 25 - come celebrate at Botik at 8pm!",
     type: "website",
     images: [{ url: "/og/share.jpg", width: 1200, height: 675, alt: "Lotta-Lorette 25 invitation" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lotta-Lorette 25",
-    description: "Lotta-Lorette turns 25 — come celebrate at Botik, Tallinn.",
+    description: "Lotta-Lorette turns 25 - come celebrate at Botik at 8pm!",
     images: ["/og/share.jpg"],
   },
 };

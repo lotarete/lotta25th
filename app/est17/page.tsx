@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "../hero";
 
-const description = "Lotta-Lorette saab 25 — kohtume Botikus kell 17:00.";
+const description = "Lotta-Lorette 25 - kohtume Botikus kell 17:00!";
 
 export const metadata: Metadata = {
   description,
