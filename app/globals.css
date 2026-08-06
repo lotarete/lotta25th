@@ -130,7 +130,7 @@ body {
 
   .rsvp-button {
     left: 85%;
-    top: 60%;
+    top: 64%;
     padding: 0.85cqw 2.8cqw;
     border-width: 0.12cqw;
     font-size: 1.5cqw;
@@ -138,7 +138,7 @@ body {
 
   .rsvp-note {
     left: 85%;
-    bottom: 41%;
+    bottom: 37%;
     width: 26%;
     font-size: 0.68cqw;
   }
